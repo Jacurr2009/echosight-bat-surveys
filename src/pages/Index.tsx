@@ -73,6 +73,34 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Consultancies We Support */}
+      <section className="py-16 lg:py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-primary font-mono text-sm tracking-widest uppercase mb-3">Trusted Partners</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Consultancies EchoSight Supports</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-sm">We provide specialist bat survey and analysis support to ecological consultancies across the UK.</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {[
+              "Thames Valley Ecology",
+              "Southern Counties Environmental",
+              "Berkshire Wildlife Consultants",
+              "Wessex Ecological",
+              "Midlands Bat Group",
+              "Heritage Ecology",
+            ].map((name) => (
+              <div
+                key={name}
+                className="flex items-center justify-center bg-card border border-border rounded-lg px-4 py-6 hover:border-primary/30 transition-colors"
+              >
+                <span className="text-xs font-semibold text-muted-foreground text-center tracking-wide uppercase">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Cards */}
       <section className="py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
