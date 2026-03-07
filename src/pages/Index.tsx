@@ -1,6 +1,7 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Users, Radio, Eye, BarChart3, FileText, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowRight, Shield, Users, Radio, Eye, BarChart3, FileText, CheckCircle2, ChevronRight, ChevronLeft } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const services = [
