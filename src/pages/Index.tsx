@@ -86,6 +86,31 @@ const testimonials = [
 ];
 
 const Index = () => {
+  const [activeOutput, setActiveOutput] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setActiveOutput((prev) => (prev + 1) % exampleOutputs.length);
+        setIsTransitioning(false);
+      }, 200);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const goTo = (index: number) => {
+    if (index === activeOutput) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveOutput(index);
+      setIsTransitioning(false);
+    }, 200);
+  };
+
+  const currentOutput = exampleOutputs[activeOutput];
+
   return (
     <>
       {/* Hero */}
