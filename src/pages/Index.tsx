@@ -28,6 +28,57 @@ const deliverables = [
   "Recommendations for mitigation",
 ];
 
+const exampleOutputs = [
+  {
+    label: "Species Identification Report",
+    icon: "📋",
+    rows: [
+      { key: "Species", value: "Common pipistrelle (Pipistrellus pipistrellus)" },
+      { key: "Passes Recorded", value: "247" },
+      { key: "Survey Period", value: "June–September 2025" },
+      { key: "Peak Activity", value: "22:15–23:30 BST" },
+      { key: "Confidence", value: "High (manual QA)" },
+      { key: "Status", value: "Reviewed ✓" },
+    ],
+  },
+  {
+    label: "Acoustic Analysis Summary",
+    icon: "🔊",
+    rows: [
+      { key: "Detector", value: "SM4BAT FS — Location 3 (hedgerow)" },
+      { key: "Recording Nights", value: "42" },
+      { key: "Total Passes", value: "1,824" },
+      { key: "Species Detected", value: "5 (Ppip, Ppyg, Nyctalus, Myotis, Plecotus)" },
+      { key: "Analysis Software", value: "Kaleidoscope Pro + manual verification" },
+      { key: "QA Status", value: "Peer-reviewed ✓" },
+    ],
+  },
+  {
+    label: "Annotated Thermal Clip",
+    icon: "🌡️",
+    rows: [
+      { key: "Clip Duration", value: "02:34" },
+      { key: "Species", value: "Brown long-eared bat" },
+      { key: "Behaviour", value: "Emergence from soffit gap, south gable" },
+      { key: "Timestamp", value: "21:47 BST — 18 July 2025" },
+      { key: "Tags", value: "Roost confirmation, emergence count: 3" },
+      { key: "Delivery", value: "MP4 + annotated still frame ✓" },
+    ],
+  },
+  {
+    label: "Motion Composite Image",
+    icon: "📸",
+    rows: [
+      { key: "Composite Type", value: "Multi-frame activity overlay" },
+      { key: "Source", value: "Infrared camera — north elevation" },
+      { key: "Duration Captured", value: "21:30–23:00 BST" },
+      { key: "Flight Paths Mapped", value: "12 distinct trajectories" },
+      { key: "Species", value: "Common pipistrelle (confirmed)" },
+      { key: "Use", value: "Report figure — flight path illustration ✓" },
+    ],
+  },
+];
+
 const testimonials = [
   { quote: "EchoSight turned around our acoustic analysis in 48 hours—the quality was exceptional. They've become our go-to for static detector work.", author: "Senior Ecologist", company: "Thames Valley Ecology Ltd" },
   { quote: "Jack's PRA reports are consistently thorough and clearly written. Our clients and planners love the clarity.", author: "Director", company: "Southern Counties Environmental" },
