@@ -29,6 +29,7 @@ const Footer = () => {
             <h4 className="font-semibold text-sm mb-4 uppercase tracking-wider text-accent-foreground/40">Company</h4>
             <nav className="flex flex-col gap-2">
               <Link to="/about" className="text-sm text-accent-foreground/70 hover:text-primary transition-colors">About EchoSight</Link>
+              <Link to="/example-outputs" className="text-sm text-accent-foreground/70 hover:text-primary transition-colors">Example Outputs</Link>
               <Link to="/case-studies" className="text-sm text-accent-foreground/70 hover:text-primary transition-colors">Case Studies</Link>
               <Link to="/faq" className="text-sm text-accent-foreground/70 hover:text-primary transition-colors">FAQ</Link>
               <Link to="/contact" className="text-sm text-accent-foreground/70 hover:text-primary transition-colors">Contact</Link>
