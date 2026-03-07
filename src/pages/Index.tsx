@@ -245,14 +245,54 @@ const Index = () => {
               </ul>
             </div>
             <div className="bg-accent rounded-lg p-8 lg:p-10">
-              <p className="font-mono text-xs uppercase tracking-widest text-accent-foreground/40 mb-4">Example Output</p>
-              <div className="space-y-3 font-mono text-sm text-accent-foreground/70">
-                <p><span className="text-primary">Species:</span> Common pipistrelle</p>
-                <p><span className="text-primary">Passes:</span> 247</p>
-                <p><span className="text-primary">Period:</span> June–September 2025</p>
-                <p><span className="text-primary">Peak Activity:</span> 22:15–23:30</p>
-                <p><span className="text-primary">Confidence:</span> High (manual QA)</p>
-                <p><span className="text-primary">Status:</span> Reviewed ✓</p>
+              <div className="flex items-center justify-between mb-5">
+                <p className="font-mono text-xs uppercase tracking-widest text-accent-foreground/40">
+                  {currentOutput.label}
+                </p>
+                <span className="text-xl">{currentOutput.icon}</span>
+              </div>
+              <div
+                className={`space-y-3 font-mono text-sm text-accent-foreground/70 transition-opacity duration-200 min-h-[210px] ${
+                  isTransitioning ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                {currentOutput.rows.map((row) => (
+                  <p key={row.key}>
+                    <span className="text-primary">{row.key}:</span> {row.value}
+                  </p>
+                ))}
+              </div>
+              <div className="flex items-center justify-between mt-6 pt-4 border-t border-border/50">
+                <div className="flex gap-1.5">
+                  {exampleOutputs.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => goTo(i)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        i === activeOutput
+                          ? "bg-primary w-5"
+                          : "bg-accent-foreground/20 hover:bg-accent-foreground/40"
+                      }`}
+                      aria-label={`View example ${i + 1}`}
+                    />
+                  ))}
+                </div>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => goTo((activeOutput - 1 + exampleOutputs.length) % exampleOutputs.length)}
+                    className="p-1.5 rounded hover:bg-accent-foreground/10 text-accent-foreground/40 hover:text-accent-foreground/70 transition-colors"
+                    aria-label="Previous example"
+                  >
+                    <ChevronLeft size={16} />
+                  </button>
+                  <button
+                    onClick={() => goTo((activeOutput + 1) % exampleOutputs.length)}
+                    className="p-1.5 rounded hover:bg-accent-foreground/10 text-accent-foreground/40 hover:text-accent-foreground/70 transition-colors"
+                    aria-label="Next example"
+                  >
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
