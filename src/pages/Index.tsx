@@ -1,6 +1,7 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Users, Radio, Eye, BarChart3, FileText, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowRight, Shield, Users, Radio, Eye, BarChart3, FileText, CheckCircle2, ChevronRight, ChevronLeft } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const services = [
@@ -27,6 +28,57 @@ const deliverables = [
   "Recommendations for mitigation",
 ];
 
+const exampleOutputs = [
+  {
+    label: "Species Identification Report",
+    icon: "📋",
+    rows: [
+      { key: "Species", value: "Common pipistrelle (Pipistrellus pipistrellus)" },
+      { key: "Passes Recorded", value: "247" },
+      { key: "Survey Period", value: "June–September 2025" },
+      { key: "Peak Activity", value: "22:15–23:30 BST" },
+      { key: "Confidence", value: "High (manual QA)" },
+      { key: "Status", value: "Reviewed ✓" },
+    ],
+  },
+  {
+    label: "Acoustic Analysis Summary",
+    icon: "🔊",
+    rows: [
+      { key: "Detector", value: "SM4BAT FS — Location 3 (hedgerow)" },
+      { key: "Recording Nights", value: "42" },
+      { key: "Total Passes", value: "1,824" },
+      { key: "Species Detected", value: "5 (Ppip, Ppyg, Nyctalus, Myotis, Plecotus)" },
+      { key: "Analysis Software", value: "Kaleidoscope Pro + manual verification" },
+      { key: "QA Status", value: "Peer-reviewed ✓" },
+    ],
+  },
+  {
+    label: "Annotated Thermal Clip",
+    icon: "🌡️",
+    rows: [
+      { key: "Clip Duration", value: "02:34" },
+      { key: "Species", value: "Brown long-eared bat" },
+      { key: "Behaviour", value: "Emergence from soffit gap, south gable" },
+      { key: "Timestamp", value: "21:47 BST — 18 July 2025" },
+      { key: "Tags", value: "Roost confirmation, emergence count: 3" },
+      { key: "Delivery", value: "MP4 + annotated still frame ✓" },
+    ],
+  },
+  {
+    label: "Motion Composite Image",
+    icon: "📸",
+    rows: [
+      { key: "Composite Type", value: "Multi-frame activity overlay" },
+      { key: "Source", value: "Infrared camera — north elevation" },
+      { key: "Duration Captured", value: "21:30–23:00 BST" },
+      { key: "Flight Paths Mapped", value: "12 distinct trajectories" },
+      { key: "Species", value: "Common pipistrelle (confirmed)" },
+      { key: "Use", value: "Report figure — flight path illustration ✓" },
+    ],
+  },
+];
+
 const testimonials = [
   { quote: "EchoSight turned around our acoustic analysis in 48 hours—the quality was exceptional. They've become our go-to for static detector work.", author: "Senior Ecologist", company: "Thames Valley Ecology Ltd" },
   { quote: "Jack's PRA reports are consistently thorough and clearly written. Our clients and planners love the clarity.", author: "Director", company: "Southern Counties Environmental" },
@@ -34,6 +86,31 @@ const testimonials = [
 ];
 
 const Index = () => {
+  const [activeOutput, setActiveOutput] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setActiveOutput((prev) => (prev + 1) % exampleOutputs.length);
+        setIsTransitioning(false);
+      }, 200);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const goTo = (index: number) => {
+    if (index === activeOutput) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveOutput(index);
+      setIsTransitioning(false);
+    }, 200);
+  };
+
+  const currentOutput = exampleOutputs[activeOutput];
+
   return (
     <>
       {/* Hero */}
@@ -168,14 +245,54 @@ const Index = () => {
               </ul>
             </div>
             <div className="bg-accent rounded-lg p-8 lg:p-10">
-              <p className="font-mono text-xs uppercase tracking-widest text-accent-foreground/40 mb-4">Example Output</p>
-              <div className="space-y-3 font-mono text-sm text-accent-foreground/70">
-                <p><span className="text-primary">Species:</span> Common pipistrelle</p>
-                <p><span className="text-primary">Passes:</span> 247</p>
-                <p><span className="text-primary">Period:</span> June–September 2025</p>
-                <p><span className="text-primary">Peak Activity:</span> 22:15–23:30</p>
-                <p><span className="text-primary">Confidence:</span> High (manual QA)</p>
-                <p><span className="text-primary">Status:</span> Reviewed ✓</p>
+              <div className="flex items-center justify-between mb-5">
+                <p className="font-mono text-xs uppercase tracking-widest text-accent-foreground/40">
+                  {currentOutput.label}
+                </p>
+                <span className="text-xl">{currentOutput.icon}</span>
+              </div>
+              <div
+                className={`space-y-3 font-mono text-sm text-accent-foreground/70 transition-opacity duration-200 min-h-[210px] ${
+                  isTransitioning ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                {currentOutput.rows.map((row) => (
+                  <p key={row.key}>
+                    <span className="text-primary">{row.key}:</span> {row.value}
+                  </p>
+                ))}
+              </div>
+              <div className="flex items-center justify-between mt-6 pt-4 border-t border-border/50">
+                <div className="flex gap-1.5">
+                  {exampleOutputs.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => goTo(i)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        i === activeOutput
+                          ? "bg-primary w-5"
+                          : "bg-accent-foreground/20 hover:bg-accent-foreground/40"
+                      }`}
+                      aria-label={`View example ${i + 1}`}
+                    />
+                  ))}
+                </div>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => goTo((activeOutput - 1 + exampleOutputs.length) % exampleOutputs.length)}
+                    className="p-1.5 rounded hover:bg-accent-foreground/10 text-accent-foreground/40 hover:text-accent-foreground/70 transition-colors"
+                    aria-label="Previous example"
+                  >
+                    <ChevronLeft size={16} />
+                  </button>
+                  <button
+                    onClick={() => goTo((activeOutput + 1) % exampleOutputs.length)}
+                    className="p-1.5 rounded hover:bg-accent-foreground/10 text-accent-foreground/40 hover:text-accent-foreground/70 transition-colors"
+                    aria-label="Next example"
+                  >
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
