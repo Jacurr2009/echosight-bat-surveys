@@ -13,6 +13,7 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import ExampleOutputs from "./pages/ExampleOutputs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
