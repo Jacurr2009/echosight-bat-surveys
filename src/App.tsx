@@ -14,6 +14,7 @@ import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import ExampleOutputs from "./pages/ExampleOutputs";
+import Availability from "./pages/Availability";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/example-outputs" element={<ExampleOutputs />} />
+            <Route path="/availability" element={<Availability />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
