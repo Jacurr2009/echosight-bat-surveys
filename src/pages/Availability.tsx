@@ -155,14 +155,6 @@ const Availability = () => {
         </div>
       </section>
 
-      {/* Services available */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">Services Available to Book</h2>
-          </p>
-        </div>
-      </section>
 
       {/* Services available */}
       <section className="py-16 bg-muted/40">
