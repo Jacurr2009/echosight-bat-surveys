@@ -89,6 +89,81 @@ const Availability = () => {
         </div>
       </section>
 
+      {/* Available Dates */}
+      <section className="py-16 bg-muted/40">
+        <div className="container mx-auto px-4 lg:px-8">
+          <h2 className="text-2xl font-bold mb-2">Available Dates</h2>
+          <p className="text-muted-foreground mb-8 text-sm">Specific dates currently open for field surveys, including weekends.</p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* May */}
+            <div className="bg-card rounded-xl border border-border p-5">
+              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                May
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[18, 20, 22, 23, 24, 26, 27, 28, 30, 31].map((d) => (
+                  <span key={d} className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-medium">
+                    {d}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* June */}
+            <div className="bg-card rounded-xl border border-border p-5">
+              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                June
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[1, 3, 4, 5, 7, 11, 12, 13, 17, 19, 21, 22, 24, 25, 26, 27, 28, 29].map((d) => (
+                  <span key={d} className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-medium">
+                    {d}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* July */}
+            <div className="bg-card rounded-xl border border-border p-5">
+              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                July
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[1, 2, 3, 4, 5, 12, 13, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30].map((d) => (
+                  <span key={d} className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-medium">
+                    {d}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Aug–Sep */}
+            <div className="bg-card rounded-xl border border-border p-5">
+              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                August – September
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Flexible availability across both months. <Link to="/contact" className="text-primary hover:underline">Get in touch</Link> to discuss your preferred dates.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services available */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold mb-6">Services Available to Book</h2>
+          </p>
+        </div>
+      </section>
+
       {/* Services available */}
       <section className="py-16 bg-muted/40">
         <div className="container mx-auto px-4 lg:px-8">
